@@ -5,13 +5,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ll_data_diri"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:gravity="center_horizontal"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ll_alamat_ktp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,11 +18,13 @@
 
         <ImageView
             android:id="@+id/iv_data_diri"
-            android:layout_width="@dimen/_20sdp"
-            android:layout_height="@dimen/_20sdp"
-            android:layout_marginBottom="@dimen/_4sdp"
-            android:background="@drawable/bg_circle_selected"
-            android:contentDescription="@string/title_content_description" />
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:contentDescription="@string/title_content_description"
+            android:src="@drawable/bg_circle_selected"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_data_diri"
@@ -31,33 +32,50 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_semibold"
             android:text="@string/title_data_diri"
-            android:textColor="@color/colorTextPrimary"
+            android:textColor="@color/colorAccent"
             android:textSize="@dimen/_11ssp"
+            android:layout_marginTop="@dimen/_8sdp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </LinearLayout>
+            app:layout_constraintEnd_toEndOf="@+id/iv_data_diri"
+            app:layout_constraintStart_toStartOf="@+id/iv_data_diri"
+            app:layout_constraintTop_toBottomOf="@+id/iv_data_diri" />
 
-    <LinearLayout
+        <TextView
+            android:id="@+id/tv_data_diri_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_data_diri"
+            app:layout_constraintEnd_toEndOf="@+id/iv_data_diri"
+            app:layout_constraintStart_toStartOf="@+id/iv_data_diri"
+            app:layout_constraintTop_toTopOf="@+id/iv_data_diri"
+            android:text="@string/title_number_1"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ll_alamat_ktp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20sdp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        app:layout_constraintStart_toEndOf="@+id/ll_data_diri"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ll_review_data"
+        app:layout_constraintStart_toEndOf="@+id/ll_data_diri"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="UseCompoundDrawables">
 
         <ImageView
             android:id="@+id/iv_alamat_ktp"
-            android:layout_width="@dimen/_20sdp"
-            android:layout_height="@dimen/_20sdp"
-            android:layout_marginBottom="@dimen/_4sdp"
-            android:background="@drawable/bg_circle"
-            android:contentDescription="@string/title_content_description" />
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:contentDescription="@string/title_content_description"
+            android:src="@drawable/bg_circle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_alamat_ktp"
@@ -65,21 +83,36 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_semibold"
             android:text="@string/title_alamat_ktp"
-            android:textColor="@color/colorTextPrimary"
+            android:textColor="@color/colorSecondary"
             android:textSize="@dimen/_11ssp"
+            android:layout_marginTop="@dimen/_8sdp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </LinearLayout>
+            app:layout_constraintEnd_toEndOf="@+id/iv_alamat_ktp"
+            app:layout_constraintStart_toStartOf="@+id/iv_alamat_ktp"
+            app:layout_constraintTop_toBottomOf="@+id/iv_alamat_ktp" />
 
-    <LinearLayout
+        <TextView
+            android:id="@+id/tv_alamat_ktp_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_alamat_ktp"
+            app:layout_constraintEnd_toEndOf="@+id/iv_alamat_ktp"
+            app:layout_constraintStart_toStartOf="@+id/iv_alamat_ktp"
+            app:layout_constraintTop_toTopOf="@+id/iv_alamat_ktp"
+            android:text="@string/title_number_2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ll_review_data"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20sdp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ll_alamat_ktp"
         app:layout_constraintTop_toTopOf="parent"
@@ -87,11 +120,13 @@
 
         <ImageView
             android:id="@+id/iv_review_data"
-            android:layout_width="@dimen/_20sdp"
-            android:layout_height="@dimen/_20sdp"
-            android:layout_marginBottom="@dimen/_4sdp"
-            android:background="@drawable/bg_circle"
-            android:contentDescription="@string/title_content_description" />
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:contentDescription="@string/title_content_description"
+            android:src="@drawable/bg_circle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_review_data"
@@ -99,13 +134,28 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_semibold"
             android:text="@string/title_review_data"
-            android:textColor="@color/colorTextPrimary"
+            android:textColor="@color/colorSecondary"
             android:textSize="@dimen/_11ssp"
+            android:layout_marginTop="@dimen/_8sdp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </LinearLayout>
+            app:layout_constraintEnd_toEndOf="@+id/iv_review_data"
+            app:layout_constraintStart_toStartOf="@+id/iv_review_data"
+            app:layout_constraintTop_toBottomOf="@+id/iv_review_data" />
+
+        <TextView
+            android:id="@+id/tv_review_data_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_review_data"
+            app:layout_constraintEnd_toEndOf="@+id/iv_review_data"
+            app:layout_constraintStart_toStartOf="@+id/iv_review_data"
+            app:layout_constraintTop_toTopOf="@+id/iv_review_data"
+            android:text="@string/title_number_3" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
         android:layout_width="match_parent"

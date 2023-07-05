@@ -18,10 +18,13 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"/>
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/vi"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_main"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:defaultNavHost="true"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:navGraph="@navigation/mobile_navigation"
         app:layout_constraintTop_toBottomOf="@+id/stepper"
         app:layout_constraintBottom_toBottomOf="parent"/>
 

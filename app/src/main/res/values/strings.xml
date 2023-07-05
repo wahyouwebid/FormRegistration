@@ -5,5 +5,9 @@
     <string name="title_content_description">ImageView</string>
     <string name="title_data_diri">Data Diri</string>
     <string name="title_review_data">Review Data</string>
+    <string name="title_submit">Submit</string>
+    <string name="title_number_3">3</string>
+    <string name="title_number_2">2</string>
+    <string name="title_number_1">1</string>
 
 </resources>

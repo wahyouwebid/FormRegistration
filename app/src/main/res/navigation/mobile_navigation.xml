@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/dataDiriFragment">
+
+
+    <fragment
+        android:id="@+id/dataDiriFragment"
+        android:name="com.ujangwahyu.testamarbank.modules.presentation.ui.DataDiriFragment"
+        android:label="DataDiriFragment" >
+        <action
+            android:id="@+id/action_dataDiriFragment_to_alamatKtpFragment"
+            app:destination="@id/alamatKtpFragment"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right"
+            app:popUpToInclusive="false"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/alamatKtpFragment"
+        android:name="com.ujangwahyu.testamarbank.modules.presentation.ui.AlamatKtpFragment"
+        android:label="AlamatKtpFragment" >
+        <action
+            android:id="@+id/action_alamatKtpFragment_to_reviewDataFragment"
+            app:destination="@id/reviewDataFragment"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right"
+            app:popUpToInclusive="false"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/reviewDataFragment"
+        android:name="com.ujangwahyu.testamarbank.modules.presentation.ui.ReviewDataFragment"
+        android:label="ReviewDataFragment" />
+
+</navigation>

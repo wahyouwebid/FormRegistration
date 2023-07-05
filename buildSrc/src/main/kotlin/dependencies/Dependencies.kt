@@ -8,6 +8,10 @@ object Dependencies {
     const val ANDROIDX_CORE = "androidx.core:core-ktx:${Versions.CORE}"
     const val ANDROIDX_APPCOMPAT = "androidx.appcompat:appcompat:${Versions.APP_COMPAT}"
     const val ANDROIDX_CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:${Versions.CONSTRAINT_LAYOUT}"
+    const val ANDROIDX_ACTIVITY_KTX = "androidx.fragment:fragment-ktx:${Versions.FRAGMENT_KTX}"
+    const val ANDROIDX_FRAGENT_KTX = "androidx.activity:activity-ktx:${Versions.ACTIVITY_KTX}"
+    const val NAVIGATION_UI = "androidx.navigation:navigation-ui-ktx:${Versions.NAVIGATION}"
+    const val NAVIGATION_FRAGMENT = "androidx.navigation:navigation-fragment-ktx:${Versions.NAVIGATION}"
 
     /** Networking Retfotit & OkHttp **/
     const val RETROFIT = "com.squareup.retrofit2:retrofit:${Versions.RETROFIT}"

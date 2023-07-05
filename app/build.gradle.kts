@@ -34,18 +34,6 @@ android {
             buildConfigField("String", "baseUrl", "\"api.goapi.id/v1/\"")
             buildConfigField("String", "apiKey", "\"Mz4GqJZQbtqFh7o3UVTaEvUQ3qpX7q\"")
         }
-//        debug {
-//            isMinifyEnabled = false
-//            proguardFiles (getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-////            buildConfigField("String", "baseUrl", "\"api.goapi.id/v1/\"")
-////            buildConfigField("String", "apiKey", "\"Mz4GqJZQbtqFh7o3UVTaEvUQ3qpX7q\"")
-//        }
-//        release {
-//            isMinifyEnabled = true
-//            proguardFiles (getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-////            buildConfigField("String", "baseUrl", "\"api.goapi.id/v1/\"")
-////            buildConfigField("String", "apiKey", "\"Mz4GqJZQbtqFh7o3UVTaEvUQ3qpX7q\"")
-//        }
     }
 
     compileOptions {
@@ -65,6 +53,12 @@ dependencies {
     implementation(Dependencies.ANDROIDX_APPCOMPAT)
     implementation(Dependencies.MATERIAL)
     implementation(Dependencies.ANDROIDX_CONSTRAINT_LAYOUT)
+    implementation(Dependencies.ANDROIDX_ACTIVITY_KTX)
+    implementation(Dependencies.ANDROIDX_FRAGENT_KTX)
+
+    // Navigation Component
+    implementation(Dependencies.NAVIGATION_FRAGMENT)
+    implementation(Dependencies.NAVIGATION_UI)
 
     //Networking
     implementation(Dependencies.RETROFIT)

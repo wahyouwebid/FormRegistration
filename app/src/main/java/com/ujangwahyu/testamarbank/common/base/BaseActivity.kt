@@ -16,11 +16,14 @@ abstract class BaseActivity<T : ViewBinding>(private val bindingInflater: (layou
         _binding = bindingInflater.invoke(layoutInflater)
         setContentView(binding.root)
         setupView(savedInstanceState)
+        setupViewModel()
         setupData()
         setupListener()
     }
 
     abstract fun setupView(savedInstanceState: Bundle?)
+
+    abstract fun setupViewModel()
 
     open fun setupData() {}
 
