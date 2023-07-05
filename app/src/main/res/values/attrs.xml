@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="UIKitEditText">
+        <attr name="field_hint" format="string" />
+        <attr name="field_label" format="string" />
+        <attr name="field_text" format="string" />
+        <attr name="field_text_inline" format="string" />
+        <attr name="field_show_inline" format="boolean" />
+        <attr name="field_max_length" format="integer" />
+        <attr name="field_input_type" format="integer" />
+        <attr name="field_info_icon" format="boolean" />
+        <attr name="field_info_icon_drawable" format="reference" />
+        <attr name="field_digits" format="string" />
+        <attr name="field_edit_table" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="UIKitTextView">
+        <attr name="text_label" format="string" />
+        <attr name="text_value" format="string" />
+    </declare-styleable>
+</resources>

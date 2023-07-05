@@ -1,6 +1,7 @@
 package com.ujangwahyu.testamarbank.modules.presentation.ui
 
 import android.os.Bundle
+import androidx.core.view.WindowCompat
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.findNavController

@@ -4,12 +4,111 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="@dimen/_20sdp"
-        android:gravity="center"
-        android:text="ALAMAT KTP"/>
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_submit">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/_60sdp"
+            android:fitsSystemWindows="true">
+
+            <TextView
+                android:id="@+id/tv_label_alamat_ktp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_section"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/title_alamat_ktp"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="@dimen/_14ssp"
+                android:layout_marginTop="@dimen/_24sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <com.ujangwahyu.testamarbank.common.uikit.UIKitEditText
+                android:id="@+id/et_domicile_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_24sdp"
+                app:field_digits="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM "
+                app:field_max_length="100"
+                app:field_hint="@string/title_hint_domicile_addess"
+                app:field_label="@string/title_label_domicile_addess"
+                app:field_show_inline="true"
+                app:field_text_inline="@string/title_required"
+                app:layout_constraintTop_toBottomOf="@+id/tv_label_alamat_ktp"/>
+
+            <com.ujangwahyu.testamarbank.common.uikit.UIKitEditText
+                android:id="@+id/et_housing_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_24sdp"
+                android:focusable="false"
+                app:field_hint="@string/title_hint_housing_type"
+                app:field_label="@string/title_hint_housing_type"
+                app:field_info_icon="true"
+                app:field_show_inline="true"
+                app:field_text_inline="@string/title_required"
+                app:field_info_icon_drawable="@drawable/ic_housing_type"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_domicile_address" />
+
+            <com.ujangwahyu.testamarbank.common.uikit.UIKitEditText
+                android:id="@+id/et_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_24sdp"
+                app:field_digits="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890 "
+                app:field_max_length="20"
+                app:field_hint="@string/title_hint_house_no"
+                app:field_label="@string/title_label_house_no"
+                app:field_show_inline="true"
+                app:field_text_inline="@string/title_required"
+                app:layout_constraintTop_toBottomOf="@+id/et_housing_type"/>
+
+            <com.ujangwahyu.testamarbank.common.uikit.UIKitEditText
+                android:id="@+id/et_province"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_24sdp"
+                android:focusable="false"
+                app:field_hint="@string/title_hint_province"
+                app:field_label="@string/title_hint_province"
+                app:field_info_icon="true"
+                app:field_show_inline="true"
+                app:field_text_inline="@string/title_required"
+                app:field_info_icon_drawable="@drawable/ic_location"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_no" />
+
+            <FrameLayout
+                android:id="@+id/frame_housing_type"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:clickable="true"
+                app:layout_constraintBottom_toBottomOf="@id/et_housing_type"
+                app:layout_constraintEnd_toEndOf="@id/et_housing_type"
+                app:layout_constraintStart_toStartOf="@id/et_housing_type"
+                app:layout_constraintTop_toTopOf="@id/et_housing_type" />
+
+            <FrameLayout
+                android:id="@+id/frame_province"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:clickable="true"
+                app:layout_constraintBottom_toBottomOf="@id/et_province"
+                app:layout_constraintEnd_toEndOf="@id/et_province"
+                app:layout_constraintStart_toStartOf="@id/et_province"
+                app:layout_constraintTop_toTopOf="@id/et_province" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_submit"
@@ -18,12 +117,10 @@
         android:background="@drawable/bg_rounded_all_primary"
         android:fontFamily="@font/poppins_bold"
         android:text="@string/title_submit"
+        android:layout_margin="@dimen/_24sdp"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="@dimen/_16ssp"
-        android:layout_marginBottom="@dimen/_24sdp"
-        android:layout_marginEnd="@dimen/_24sdp"
-        android:layout_marginStart="@dimen/_24ssp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

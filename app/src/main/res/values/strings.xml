@@ -9,5 +9,22 @@
     <string name="title_number_3">3</string>
     <string name="title_number_2">2</string>
     <string name="title_number_1">1</string>
+    <string name="title_hint_national_id">Enter national id</string>
+    <string name="title_label_national_id">National ID</string>
+    <string name="title_hint_full_name">Enter full name</string>
+    <string name="title_label_full_name">Full Name</string>
+    <string name="title_required">(Required)</string>
+    <string name="title_hint_date_of_birth">Date of birth</string>
+    <string name="title_label_date_of_birth">Date of birth</string>
+    <string name="title_hint_bank_account_no">Enter bank account no</string>
+    <string name="title_label_bank_account_no">Bank Account No</string>
+    <string name="title_hint_education">Education</string>
+    <string name="title_label_education">Education</string>
+    <string name="title_hint_domicile_addess">Enter domicile address</string>
+    <string name="title_label_domicile_addess">Domicile Address</string>
+    <string name="title_hint_housing_type">Housing Type</string>
+    <string name="title_hint_house_no">Enter house number</string>
+    <string name="title_label_house_no">Housing Number</string>
+    <string name="title_hint_province">Province</string>
 
 </resources>

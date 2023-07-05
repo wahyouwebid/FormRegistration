@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_16sdp"
+        app:boxBackgroundColor="@color/black"
+        app:boxStrokeColor="@color/white"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:hintTextColor="@color/colorTextHint"
+        android:textColorHint="@color/colorTextHint"
+        app:layout_constraintEnd_toStartOf="@id/iv_clear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:hint="Hint...">
+
+        <EditText
+            android:id="@+id/edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:background="@color/white"
+            android:digits="123"
+            android:fontFamily="@font/poppins_regular"
+            android:inputType="text"
+            android:paddingStart="@dimen/_8sdp"
+            android:paddingTop="@dimen/_8sdp"
+            android:paddingEnd="0dp"
+            android:paddingBottom="@dimen/_6sdp"
+            android:textColor="@color/colorTextPrimary"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textCursorDrawable="@drawable/bg_cursor"
+            android:textSize="@dimen/_16ssp"
+            tools:ignore="Autofill,LabelFor" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/iv_clear"
+        android:layout_width="@dimen/_24sdp"
+        android:layout_height="@dimen/_24sdp"
+        android:layout_marginTop="@dimen/_14sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_clear_grey"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/underline"
+        app:layout_constraintEnd_toStartOf="@id/iv_info"
+        app:layout_constraintTop_toTopOf="@id/input_layout"
+        tools:visibility="visible"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/iv_info"
+        android:layout_width="@dimen/_24sdp"
+        android:layout_height="@dimen/_24sdp"
+        android:layout_marginTop="@dimen/_14sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_info"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/underline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/input_layout"
+        tools:visibility="visible"
+        tools:ignore="ContentDescription" />
+
+    <View
+        android:id="@+id/underline"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:background="@color/colorSecondary"
+        app:layout_constraintTop_toBottomOf="@id/input_layout" />
+
+    <TextView
+        android:id="@+id/tv_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/colorTextPrimary"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/input_layout"
+        tools:text="Label"/>
+
+    <TextView
+        android:id="@+id/tv_inline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:fontFamily="@font/poppins_regular"
+        android:paddingStart="@dimen/_8sdp"
+        android:paddingEnd="@dimen/_8sdp"
+        android:textColor="@color/colorTextPrimary"
+        android:textSize="@dimen/_10ssp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/underline"
+        tools:ignore="SmallSp" />
+
+    <FrameLayout
+        android:id="@+id/frame_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tv_inline"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
