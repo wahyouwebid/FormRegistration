@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TestAmarBank</string>
+    <string name="title_toolbar">REGISTRATION FORM</string>
+    <string name="title_alamat_ktp">Alamat KTP</string>
+    <string name="title_content_description">ImageView</string>
+    <string name="title_data_diri">Data Diri</string>
+    <string name="title_review_data">Review Data</string>
+
+</resources>
