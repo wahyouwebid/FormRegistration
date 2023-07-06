@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/dataDiriFragment"
-        android:name="com.ujangwahyu.testamarbank.modules.presentation.ui.DataDiriFragment"
+        android:name="com.ujangwahyu.testamarbank.modules.presentation.ui.datadiri.DataDiriFragment"
         android:label="DataDiriFragment" >
         <action
             android:id="@+id/action_dataDiriFragment_to_alamatKtpFragment"
@@ -22,7 +22,7 @@
 
     <fragment
         android:id="@+id/alamatKtpFragment"
-        android:name="com.ujangwahyu.testamarbank.modules.presentation.ui.AlamatKtpFragment"
+        android:name="com.ujangwahyu.testamarbank.modules.presentation.ui.ktp.AlamatKtpFragment"
         android:label="AlamatKtpFragment" >
         <action
             android:id="@+id/action_alamatKtpFragment_to_reviewDataFragment"
@@ -36,7 +36,7 @@
 
     <fragment
         android:id="@+id/reviewDataFragment"
-        android:name="com.ujangwahyu.testamarbank.modules.presentation.ui.ReviewDataFragment"
+        android:name="com.ujangwahyu.testamarbank.modules.presentation.ui.review.ReviewDataFragment"
         android:label="ReviewDataFragment" />
 
 </navigation>

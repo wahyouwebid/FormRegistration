@@ -198,7 +198,7 @@ class UIKitEditText(
     }
 
     fun getText(): String {
-        return binding.editText.text.toString().trim()
+        return binding.editText.text.toString()
     }
 
     fun getTextFull(): String {
@@ -209,7 +209,7 @@ class UIKitEditText(
         return binding.inputLayout
     }
 
-    fun getEditTextField(): EditText {
+    fun getEditText(): EditText {
         return binding.editText
     }
 

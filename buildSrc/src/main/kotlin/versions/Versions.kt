@@ -12,6 +12,7 @@ object Versions {
     const val GSON_CONVERTER = "2.9.0"
     const val OKHTTP = "4.9.0"
     const val OKHTTP_INTERCEPTOR = "5.0.0-alpha.3"
+    const val CHUCKER = "3.5.2"
     const val RX_ANDROID = "3.0.0"
     const val RX_JAVA = "3.0.7"
     const val RX_BINDING = "3.0.0"

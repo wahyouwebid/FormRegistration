@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ujangwahyu.testamarbank.modules.presentation.ui.MainActivity">
+    tools:context="com.ujangwahyu.testamarbank.modules.presentation.ui.main.MainActivity">
 
     <com.ujangwahyu.testamarbank.common.uikit.UIKitToolbar
         android:id="@+id/toolbar"

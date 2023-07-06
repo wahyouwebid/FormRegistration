@@ -26,5 +26,18 @@
     <string name="title_hint_house_no">Enter house number</string>
     <string name="title_label_house_no">Housing Number</string>
     <string name="title_hint_province">Province</string>
+    <string name="title_error_national_id">Please enter your national id</string>
+    <string name="title_error_full_name">Please enter your full name</string>
+    <string name="title_error_account_no">Please enter your bank account number</string>
+    <string name="title_error_education">Please enter your education</string>
+    <string name="title_error_date_of_birth">Please enter your date of birth</string>
+    <string name="title_error_national_id_16">National ID must 16 digits</string>
+    <string name="title_error_account_no_minimum">Bank account number minimum 8 digits</string>
+    <string name="title_error_domicile_address">Please enter your domicile address</string>
+    <string name="title_error_housing_type">Please enter your housing type</string>
+    <string name="title_error_housing_number">Please enter your house number</string>
+    <string name="title_error_province">Please enter your province</string>
+    <string name="title_error_all_field">Please fill in all the required information to continue</string>
+    <string name="title_oke">Oke</string>
 
 </resources>

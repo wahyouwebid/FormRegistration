@@ -1,4 +1,4 @@
-package com.ujangwahyu.testamarbank.modules.presentation.ui
+package com.ujangwahyu.testamarbank.modules.presentation.ui.review
 
 import android.os.Bundle
 import androidx.fragment.app.activityViewModels
@@ -18,7 +18,20 @@ class ReviewDataFragment: BaseFragment<FragmentReviewDataBinding>(FragmentReview
 
     }
 
-    override fun setupViewModel() {
+    override fun setupViewModel() = with(binding) {
         viewModel.setPosition(PageType.REVIEW_DATA.name)
+        viewModel.submitDataDiri.observe(viewLifecycleOwner) { data ->
+            tvNationalId.setText(data.nationalId)
+            tvFullName.setText(data.fullName)
+            tvBankAccountNo.setText(data.bankAccountNo)
+            tvEducation.setText(data.education)
+            tvDateOfBirth.setText(data.dateOfBirth)
+        }
+        viewModel.submitDataKtp.observe(viewLifecycleOwner) { data ->
+            tvDomicileAddress.setText(data.domicileAddress)
+            tvHousingType.setText(data.housingType)
+            tvHousingNo.setText(data.houseNo)
+            tvProvince.setText(data.province)
+        }
     }
 }

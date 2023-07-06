@@ -1,4 +1,4 @@
-package com.ujangwahyu.testamarbank.modules.presentation.ui
+package com.ujangwahyu.testamarbank.modules.presentation.ui.main
 
 import android.os.Bundle
 import android.view.WindowManager

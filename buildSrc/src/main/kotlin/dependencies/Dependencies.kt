@@ -19,6 +19,8 @@ object Dependencies {
     const val CONVERTER_GSON = "com.squareup.retrofit2:converter-gson:${Versions.GSON_CONVERTER}"
     const val OKHTTP = "com.squareup.okhttp3:okhttp:${Versions.OKHTTP}"
     const val OKHTTP_INTERCEPTOR = "com.squareup.okhttp3:logging-interceptor:${Versions.OKHTTP_INTERCEPTOR}"
+    const val CHUCKER = "com.github.chuckerteam.chucker:library:${Versions.CHUCKER}"
+    const val CHUCKER_NOOP = "com.github.chuckerteam.chucker:library-no-op:${Versions.CHUCKER}"
 
     /** Dagger Hilt **/
     const val HILT = "com.google.dagger:hilt-android:${Versions.DAGGER}"

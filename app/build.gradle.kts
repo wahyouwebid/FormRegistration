@@ -24,14 +24,14 @@ android {
         named("debug") {
             isMinifyEnabled = false
             proguardFiles (getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            buildConfigField("String", "baseUrl", "\"api.goapi.id/v1/\"")
+            buildConfigField("String", "baseUrl", "\"https://api.goapi.id/v1/\"")
             buildConfigField("String", "apiKey", "\"Mz4GqJZQbtqFh7o3UVTaEvUQ3qpX7q\"")
         }
 
         named("release") {
             isMinifyEnabled = true
             proguardFiles (getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            buildConfigField("String", "baseUrl", "\"api.goapi.id/v1/\"")
+            buildConfigField("String", "baseUrl", "\"https://api.goapi.id/v1/\"")
             buildConfigField("String", "apiKey", "\"Mz4GqJZQbtqFh7o3UVTaEvUQ3qpX7q\"")
         }
     }
@@ -66,6 +66,8 @@ dependencies {
     implementation(Dependencies.CONVERTER_GSON)
     implementation(Dependencies.OKHTTP)
     implementation(Dependencies.OKHTTP_INTERCEPTOR)
+    debugImplementation(Dependencies.CHUCKER)
+    releaseImplementation(Dependencies.CHUCKER_NOOP)
 
     //Dependency Injection
     implementation(Dependencies.HILT)
