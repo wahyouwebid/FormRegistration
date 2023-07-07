@@ -66,6 +66,7 @@ dependencies {
     implementation(Dependencies.CONVERTER_GSON)
     implementation(Dependencies.OKHTTP)
     implementation(Dependencies.OKHTTP_INTERCEPTOR)
+    testImplementation("org.junit.jupiter:junit-jupiter")
     debugImplementation(Dependencies.CHUCKER)
     releaseImplementation(Dependencies.CHUCKER_NOOP)
 

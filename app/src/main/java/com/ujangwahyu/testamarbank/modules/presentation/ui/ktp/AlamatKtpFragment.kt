@@ -107,7 +107,7 @@ class AlamatKtpFragment: BaseFragment<FragmentAlamatKtpBinding>(FragmentAlamatKt
 
     private fun setOnError(error: Throwable) {
         setOnLoading(false)
-        Toast.makeText(requireContext(), error.message.toString(), Toast.LENGTH_SHORT).show()
+        showError(error.message.toString())
     }
 
     private fun setupField() {
@@ -130,8 +130,8 @@ class AlamatKtpFragment: BaseFragment<FragmentAlamatKtpBinding>(FragmentAlamatKt
         }
     }
 
-    private fun showError(res: Int) {
-        val snackBar = Snackbar.make(binding.root, getString(res), Snackbar.LENGTH_INDEFINITE)
+    private fun showError(message: String) {
+        val snackBar = Snackbar.make(binding.root, message, Snackbar.LENGTH_INDEFINITE)
         snackBar.setAction(getString(R.string.title_oke)) {
             snackBar.dismiss()
         }

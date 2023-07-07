@@ -8,11 +8,13 @@ import com.ujangwahyu.testamarbank.databinding.FragmentAlamatKtpBinding
 import com.ujangwahyu.testamarbank.databinding.FragmentDataDiriBinding
 import com.ujangwahyu.testamarbank.modules.domain.model.EnumItem
 import com.ujangwahyu.testamarbank.modules.domain.model.ProvinceItem
+import com.ujangwahyu.testamarbank.modules.domain.model.ValidationResult
 import com.ujangwahyu.testamarbank.modules.domain.state.FormResultState
 import com.ujangwahyu.testamarbank.modules.domain.usecase.FormUseCase
 import com.ujangwahyu.testamarbank.modules.presentation.model.FormDataDiriParams
 import com.ujangwahyu.testamarbank.modules.presentation.model.FormDataKtp
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.reactivex.rxjava3.core.Observable
 import javax.inject.Inject
 
 
@@ -63,7 +65,7 @@ class FormViewModel @Inject constructor(
         MutableLiveData()
     }
 
-    val errorMessage: MutableLiveData<Int> by lazy {
+    val errorMessage: MutableLiveData<String> by lazy {
         MutableLiveData()
     }
 
@@ -104,16 +106,16 @@ class FormViewModel @Inject constructor(
             accountNo,
             education,
             dateOfBirth
-        ).any { !it }
+        )
 
-        if (!hasError) {
+        if (!hasError.any { !it.successful }) {
             submitDataDiri.postValue(params)
             errorMessage.postValue(null)
-            navigation?.navigate(
-                R.id.action_dataDiriFragment_to_alamatKtpFragment,
-            )
+            navigation?.navigate(R.id.action_dataDiriFragment_to_alamatKtpFragment)
         } else {
-            errorMessage.postValue(R.string.title_error_all_field)
+            hasError.reversed().filter { !it.successful }.map {
+                errorMessage.postValue(it.errorMessage)
+            }
         }
     }
 
@@ -132,88 +134,88 @@ class FormViewModel @Inject constructor(
             housingType,
             houseNumber,
             province
-        ).any { !it }
+        )
 
-        if (!hasError) {
+        if (!hasError.any { !it.successful }) {
             submitDataKtp.postValue(params)
             errorMessage.postValue(null)
-            navigation?.navigate(
-                R.id.action_alamatKtpFragment_to_reviewDataFragment,
-            )
+            navigation?.navigate(R.id.action_alamatKtpFragment_to_reviewDataFragment)
         } else {
-            errorMessage.postValue(R.string.title_error_all_field)
+            hasError.reversed().filter { !it.successful }.map {
+                errorMessage.postValue(it.errorMessage)
+            }
         }
     }
 
     fun validateNationalId(
         binding: FragmentDataDiriBinding,
         nationalId: String
-    ): Boolean {
+    ): ValidationResult {
         val result = useCase.validateNationalId(nationalId)
         binding.etNationalId.isError(result.errorMessage)
-        return result.successful
+        return result
     }
 
     fun validateBankAccountNo(
         binding: FragmentDataDiriBinding,
         accountNo: String
-    ): Boolean {
+    ): ValidationResult {
         val result = useCase.validateBankAccountNo(accountNo)
         binding.etBankAccountNo.isError(result.errorMessage)
-        return result.successful
+        return result
     }
 
     fun validateEducation(
         binding: FragmentDataDiriBinding,
         education: String
-    ): Boolean {
+    ): ValidationResult {
         val result = useCase.validateEducation(education)
         binding.etEducation.isError(result.errorMessage)
-        return result.successful
+        return result
     }
 
     fun validateDateOfBirth(
         binding: FragmentDataDiriBinding,
         dob: String
-    ): Boolean {
+    ): ValidationResult {
         val result = useCase.validateDateOfBirth(dob)
         binding.etDateOfBirth.isError(result.errorMessage)
-        return result.successful
+        return result
     }
 
     fun validateDomicile(
         binding: FragmentAlamatKtpBinding,
         domicile: String
-    ): Boolean {
+    ): ValidationResult {
         val result = useCase.validateDomicile(domicile)
         binding.etDomicileAddress.isError(result.errorMessage)
-        return result.successful
+        return result
     }
 
     fun validateHousingType(
         binding: FragmentAlamatKtpBinding,
         housingType: String
-    ): Boolean {
+    ): ValidationResult {
         val result = useCase.validateHousingType(housingType)
         binding.etHousingType.isError(result.errorMessage)
-        return result.successful
+        return result
     }
 
     fun validateHouseNumber(
         binding: FragmentAlamatKtpBinding,
         houseNumber: String
-    ): Boolean {
+    ): ValidationResult {
         val result = useCase.validateHouseNumber(houseNumber)
         binding.etNo.isError(result.errorMessage)
-        return result.successful
+        return result
     }
 
     fun validateProvince(
         binding: FragmentAlamatKtpBinding,
         province: String
-    ): Boolean {
+    ): ValidationResult {
         val result = useCase.validateProvince(province)
         binding.etProvince.isError(result.errorMessage)
-        return result.successful
+        return result
     }
 }

@@ -97,8 +97,8 @@ class DataDiriFragment: BaseFragment<FragmentDataDiriBinding>(FragmentDataDiriBi
         }
     }
 
-    private fun showError(res: Int) {
-        val snackBar = Snackbar.make(binding.root, getString(res), Snackbar.LENGTH_INDEFINITE)
+    private fun showError(message: String) {
+        val snackBar = Snackbar.make(binding.root, message, Snackbar.LENGTH_INDEFINITE)
         snackBar.setAction(getString(R.string.title_oke)) {
             snackBar.dismiss()
         }
