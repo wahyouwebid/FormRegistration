@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ujangwahyu.testamarbank.databinding.ItemAdapterBinding
 import com.ujangwahyu.testamarbank.modules.domain.model.EnumItem
-import com.ujangwahyu.testamarbank.modules.domain.model.ProvinceItem
 
 class FormEnumAdapter(
     private val selectItem: (EnumItem) -> Unit

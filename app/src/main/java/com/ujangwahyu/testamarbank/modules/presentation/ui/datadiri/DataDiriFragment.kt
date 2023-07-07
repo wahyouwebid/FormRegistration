@@ -1,17 +1,13 @@
 package com.ujangwahyu.testamarbank.modules.presentation.ui.datadiri
 
 import android.os.Bundle
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.ujangwahyu.testamarbank.R
 import com.ujangwahyu.testamarbank.common.base.BaseFragment
-import com.ujangwahyu.testamarbank.common.utils.FormValidation.validateBankAccountNo
-import com.ujangwahyu.testamarbank.common.utils.FormValidation.validateDateOfBirth
-import com.ujangwahyu.testamarbank.common.utils.FormValidation.validateEducation
-import com.ujangwahyu.testamarbank.common.utils.FormValidation.validateFullName
-import com.ujangwahyu.testamarbank.common.utils.FormValidation.validateNationalId
 import com.ujangwahyu.testamarbank.common.utils.PageType
 import com.ujangwahyu.testamarbank.common.utils.showDatePicker
 import com.ujangwahyu.testamarbank.databinding.FragmentDataDiriBinding
@@ -43,14 +39,17 @@ class DataDiriFragment: BaseFragment<FragmentDataDiriBinding>(FragmentDataDiriBi
             }
         }
         btnSubmit.setOnClickListener {
-            val data = FormDataDiriParams(
-                etNationalId.getText(),
-                etFullName.getText(),
-                etBankAccountNo.getText(),
-                etEducation.getText(),
-                etDateOfBirth.getText(),
+            viewModel.submitDataDiri(
+                navigation,
+                binding,
+                FormDataDiriParams(
+                    etNationalId.getText(),
+                    etFullName.getText(),
+                    etBankAccountNo.getText(),
+                    etEducation.getText(),
+                    etDateOfBirth.getText(),
+                )
             )
-            viewModel.submitDataDiri(data, binding, navigation)
         }
         setupField()
     }
@@ -80,11 +79,21 @@ class DataDiriFragment: BaseFragment<FragmentDataDiriBinding>(FragmentDataDiriBi
 
     private fun setupField() {
         with(binding) {
-            etNationalId.validateNationalId()
-            etBankAccountNo.validateBankAccountNo()
-            etFullName.validateFullName()
-            etEducation.validateEducation()
-            etDateOfBirth.validateDateOfBirth()
+            etNationalId.getEditText().doOnTextChanged { text, _, _, _ ->
+                viewModel.validateNationalId(binding, text.toString())
+            }
+
+            etBankAccountNo.getEditText().doOnTextChanged { text, _, _, _ ->
+                viewModel.validateBankAccountNo(binding, text.toString())
+            }
+
+            etEducation.getEditText().doOnTextChanged { text, _, _, _ ->
+                viewModel.validateEducation(binding, text.toString())
+            }
+
+            etDateOfBirth.getEditText().doOnTextChanged { text, _, _, _ ->
+                viewModel.validateDateOfBirth(binding, text.toString())
+            }
         }
     }
 

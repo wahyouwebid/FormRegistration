@@ -2,17 +2,16 @@ package com.ujangwahyu.testamarbank.modules.presentation.ui.ktp
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.ujangwahyu.testamarbank.R
 import com.ujangwahyu.testamarbank.common.base.BaseFragment
-import com.ujangwahyu.testamarbank.common.utils.FormValidation.validateDomicileAddress
-import com.ujangwahyu.testamarbank.common.utils.FormValidation.validateHouseNumber
-import com.ujangwahyu.testamarbank.common.utils.FormValidation.validateHousingType
-import com.ujangwahyu.testamarbank.common.utils.FormValidation.validateProvince
 import com.ujangwahyu.testamarbank.common.utils.PageType
+import com.ujangwahyu.testamarbank.common.utils.hide
+import com.ujangwahyu.testamarbank.common.utils.show
 import com.ujangwahyu.testamarbank.databinding.FragmentAlamatKtpBinding
 import com.ujangwahyu.testamarbank.modules.domain.model.ProvinceItem
 import com.ujangwahyu.testamarbank.modules.domain.state.FormResultState
@@ -40,22 +39,17 @@ class AlamatKtpFragment: BaseFragment<FragmentAlamatKtpBinding>(FragmentAlamatKt
             }
         }
 
-        frameProvince.setOnClickListener {
-            activity?.supportFragmentManager?.let { fragmentManaer ->
-                ProvinceBottomSheet().show(
-                    fragmentManaer, PageType.ALAMAT_KTP.name
-                )
-            }
-        }
-
         btnSubmit.setOnClickListener {
-            val data = FormDataKtp(
-                etDomicileAddress.getText(),
-                etHousingType.getText(),
-                etNo.getText(),
-                etProvince.getText()
+            viewModel.submitDataKtp(
+                navigation,
+                binding,
+                FormDataKtp(
+                    etDomicileAddress.getText(),
+                    etHousingType.getText(),
+                    etNo.getText(),
+                    etProvince.getText(),
+                )
             )
-            viewModel.submitDataKtp(data, binding, navigation)
         }
         setupField()
     }
@@ -95,24 +89,44 @@ class AlamatKtpFragment: BaseFragment<FragmentAlamatKtpBinding>(FragmentAlamatKt
         }
     }
 
-    private fun setOnSuccess(data: List<ProvinceItem>) {
+    private fun setOnSuccess(data: List<ProvinceItem>) = with(binding) {
+        setOnLoading(false)
         viewModel.provinceList.postValue(data)
+        frameProvince.setOnClickListener {
+            activity?.supportFragmentManager?.let { fragmentManaer ->
+                ProvinceBottomSheet().show(
+                    fragmentManaer, PageType.ALAMAT_KTP.name
+                )
+            }
+        }
     }
 
-    private fun setOnLoading(boolean: Boolean) {
-
+    private fun setOnLoading(isLoading: Boolean) = with(binding) {
+        if (isLoading) tvLoading.show() else tvLoading.hide()
     }
 
     private fun setOnError(error: Throwable) {
+        setOnLoading(false)
         Toast.makeText(requireContext(), error.message.toString(), Toast.LENGTH_SHORT).show()
     }
 
     private fun setupField() {
         with(binding) {
-            etDomicileAddress.validateDomicileAddress()
-            etHousingType.validateHousingType()
-            etNo.validateHouseNumber()
-            etProvince.validateProvince()
+            etDomicileAddress.getEditText().doOnTextChanged { text, _, _, _ ->
+                viewModel.validateDomicile(binding, text.toString())
+            }
+
+            etHousingType.getEditText().doOnTextChanged { text, _, _, _ ->
+                viewModel.validateHousingType(binding, text.toString())
+            }
+
+            etNo.getEditText().doOnTextChanged { text, _, _, _ ->
+                viewModel.validateHouseNumber(binding, text.toString())
+            }
+
+            etProvince.getEditText().doOnTextChanged { text, _, _, _ ->
+                viewModel.validateProvince(binding, text.toString())
+            }
         }
     }
 

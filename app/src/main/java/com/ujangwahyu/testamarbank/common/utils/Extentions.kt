@@ -40,3 +40,7 @@ fun String.dateFormatter(
     val date = SimpleDateFormat(sourcePattern, locale).parse(this)!!
     return SimpleDateFormat(targetPattern, Locale.getDefault()).format(date)
 }
+
+fun String?.checkEmpty(): String {
+    return if (this.isNullOrEmpty()) "-" else this
+}

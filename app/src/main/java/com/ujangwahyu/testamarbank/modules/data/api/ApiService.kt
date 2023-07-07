@@ -1,6 +1,5 @@
 package com.ujangwahyu.testamarbank.modules.data.api
 
-import com.ujangwahyu.testamarbank.BuildConfig
 import com.ujangwahyu.testamarbank.modules.data.model.province.ProvinceResponse
 import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.GET

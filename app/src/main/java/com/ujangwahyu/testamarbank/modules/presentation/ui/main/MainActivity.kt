@@ -1,7 +1,6 @@
 package com.ujangwahyu.testamarbank.modules.presentation.ui.main
 
 import android.os.Bundle
-import android.view.WindowManager
 import androidx.activity.viewModels
 import com.ujangwahyu.testamarbank.R
 import com.ujangwahyu.testamarbank.common.base.BaseActivity

@@ -7,14 +7,11 @@ import android.text.InputType
 import android.text.method.DigitsKeyListener
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
-import com.google.android.material.textfield.TextInputLayout
 import com.ujangwahyu.testamarbank.R
 import com.ujangwahyu.testamarbank.common.utils.hide
 import com.ujangwahyu.testamarbank.common.utils.show
@@ -123,24 +120,24 @@ class UIKitEditText(
         }
     }
 
-    fun setFilters(filters: String, inputType: Int = InputType.TYPE_CLASS_TEXT) {
+    private fun setFilters(filters: String, inputType: Int = InputType.TYPE_CLASS_TEXT) {
         binding.editText.apply {
             keyListener = DigitsKeyListener.getInstance(filters)
             setRawInputType(inputType)
         }
     }
 
-    fun setEditTable(enable: Boolean) {
+    private fun setEditTable(enable: Boolean) {
         binding.editText.isEnabled = enable
         binding.frameView.isVisible = !enable
     }
 
-    fun setHint(hint: String) {
+    private fun setHint(hint: String) {
         this.textHint = hint
         setView()
     }
 
-    fun setLabel(label: String) {
+    private fun setLabel(label: String) {
         this.textLabel = label
         setView()
     }
@@ -151,7 +148,21 @@ class UIKitEditText(
         }
     }
 
-    fun setInlineText(string: String, isWarn: Boolean = false) {
+    fun isError(errorMessage: String?){
+        with(binding) {
+            if (errorMessage.isNullOrEmpty()) {
+                tvInline.text = context.getString(R.string.title_required)
+                tvInline.setTextColor(context.getColor(R.color.colorTextPrimary))
+                underline.setBackgroundColor(context.getColor(R.color.grey))
+            } else {
+                tvInline.text = errorMessage
+                tvInline.setTextColor(context.getColor(R.color.red))
+                underline.setBackgroundColor(context.getColor(R.color.red))
+            }
+        }
+    }
+
+    private fun setInlineText(string: String, isWarn: Boolean = false) {
         binding.apply {
             tvInline.text = string
             if (isWarn) {
@@ -163,35 +174,21 @@ class UIKitEditText(
             }
         }
     }
-
-    fun setInlineText(resString: Int, isWarn: Boolean = false) {
-        setInlineText(context.getString(resString), isWarn)
-    }
-
-    fun setInlineTextColor(color: Int) {
-        binding.tvInline.setTextColor(color)
-    }
-
-    fun showInline(resString: Int? = null, isWarn: Boolean = false) {
-        if (resString != null) setInlineText(resString, isWarn)
-        binding.tvInline.visibility = VISIBLE
-    }
-
-    fun showInline(string: String? = null, isWarn: Boolean = false) {
+    private fun showInline(string: String? = null, isWarn: Boolean = false) {
         if (string != null) setInlineText(string, isWarn)
         binding.tvInline.visibility = VISIBLE
     }
 
-    fun hideInline() {
+    private fun hideInline() {
         binding.tvInline.visibility = GONE
         binding.underline.setBackgroundColor(context.getColor(R.color.grey))
     }
 
-    fun setInputType(inputType: Int) {
+    private fun setInputType(inputType: Int) {
         binding.editText.inputType = inputType
     }
 
-    fun setMaxLength(length: Int) {
+    private fun setMaxLength(length: Int) {
         if (length > 0) binding.editText.filters = arrayOf<InputFilter>(
             InputFilter.LengthFilter(length)
         )
@@ -201,36 +198,8 @@ class UIKitEditText(
         return binding.editText.text.toString()
     }
 
-    fun getTextFull(): String {
-        return binding.editText.text.toString()
-    }
-
-    fun getInputLayout(): TextInputLayout {
-        return binding.inputLayout
-    }
-
     fun getEditText(): EditText {
         return binding.editText
-    }
-
-    fun getTextViewInline(): TextView {
-        return binding.tvInline
-    }
-
-    fun getUnderline(): View {
-        return binding.underline
-    }
-
-    fun setEndIconDrawable(drawable: Drawable, alwaysShow: Boolean? = false) {
-        binding.ivClear.setImageDrawable(drawable)
-        alwaysShow?.let {
-            endIconAlwaysShow = it
-            binding.ivClear.isVisible = it
-        }
-    }
-
-    fun setOnEndIconClickAction(onClick: () -> Unit) {
-        onEndIconClick = onClick
     }
 
     private fun showInfoIcon() {
@@ -243,22 +212,6 @@ class UIKitEditText(
 
     private fun setInfoIconDrawable(drawable: Drawable) {
         binding.ivInfo.setImageDrawable(drawable)
-    }
-
-    fun setOnInfoIconClickAction(onClick: () -> Unit) {
-        onInfoIconClick = onClick
-    }
-
-    fun setOnFrameViewClickAction(onClick: () -> Unit) {
-        disableEdittext()
-        onFrameViewClick = onClick
-    }
-
-    fun disableEdittext() {
-        binding.editText.apply {
-            inputType = InputType.TYPE_NULL
-            keyListener = null
-        }
     }
 
     private fun showKeyboard() {

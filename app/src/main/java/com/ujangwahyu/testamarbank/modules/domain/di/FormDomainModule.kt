@@ -1,6 +1,5 @@
 package com.ujangwahyu.testamarbank.modules.domain.di
 
-import com.ujangwahyu.testamarbank.modules.data.repository.FormDataRepository
 import com.ujangwahyu.testamarbank.modules.domain.interactor.FormInteractor
 import com.ujangwahyu.testamarbank.modules.domain.repository.FormRepository
 import com.ujangwahyu.testamarbank.modules.domain.usecase.FormUseCase
