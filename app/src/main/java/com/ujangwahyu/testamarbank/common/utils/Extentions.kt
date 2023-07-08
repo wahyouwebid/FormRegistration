@@ -41,6 +41,11 @@ fun String.dateFormatter(
     return SimpleDateFormat(targetPattern, Locale.getDefault()).format(date)
 }
 
+fun String.isValidFormat(): Boolean {
+    val regex = Regex("""\d{2}-\d{2}-\d{4}""")
+    return regex.matches(this)
+}
+
 fun String?.checkEmpty(): String {
     return if (this.isNullOrEmpty()) "-" else this
 }

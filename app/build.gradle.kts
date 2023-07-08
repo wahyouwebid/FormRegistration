@@ -1,3 +1,4 @@
+import buildtype.AndroidBuildType
 import config.AndroidConfig
 import dependencies.Dependencies
 
@@ -21,14 +22,14 @@ android {
     }
 
     buildTypes {
-        named("debug") {
+        named(AndroidBuildType.DEBUG) {
             isMinifyEnabled = false
             proguardFiles (getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             buildConfigField("String", "baseUrl", "\"https://api.goapi.id/v1/\"")
             buildConfigField("String", "apiKey", "\"Mz4GqJZQbtqFh7o3UVTaEvUQ3qpX7q\"")
         }
 
-        named("release") {
+        named(AndroidBuildType.RELEASE) {
             isMinifyEnabled = true
             proguardFiles (getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             buildConfigField("String", "baseUrl", "\"https://api.goapi.id/v1/\"")
@@ -44,6 +45,10 @@ android {
     buildFeatures {
         buildConfig = true
         viewBinding = true
+    }
+
+    testOptions {
+        unitTests.isIncludeAndroidResources = true
     }
 }
 
@@ -66,7 +71,6 @@ dependencies {
     implementation(Dependencies.CONVERTER_GSON)
     implementation(Dependencies.OKHTTP)
     implementation(Dependencies.OKHTTP_INTERCEPTOR)
-    testImplementation("org.junit.jupiter:junit-jupiter")
     debugImplementation(Dependencies.CHUCKER)
     releaseImplementation(Dependencies.CHUCKER_NOOP)
 
@@ -82,6 +86,7 @@ dependencies {
 
     //Testing
     testImplementation(Dependencies.JUNIT)
+    testImplementation(Dependencies.MOCKITO)
     androidTestImplementation(Dependencies.ANDROIDX_JUNIT)
     androidTestImplementation(Dependencies.ESPRESSO)
 

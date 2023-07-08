@@ -21,4 +21,5 @@ object Versions {
     const val TEST_JUNIT = "4.13.2"
     const val ANDROIDX_JUNIT = "1.1.3"
     const val ANDROID_TEST_ESPRESSO = "3.4.0"
+    const val MOCKITO = "4.0.0"
 }

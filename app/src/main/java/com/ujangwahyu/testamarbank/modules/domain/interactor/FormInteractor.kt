@@ -1,5 +1,6 @@
 package com.ujangwahyu.testamarbank.modules.domain.interactor
 
+import com.ujangwahyu.testamarbank.common.utils.isValidFormat
 import com.ujangwahyu.testamarbank.modules.domain.model.EnumItem
 import com.ujangwahyu.testamarbank.modules.domain.model.ErrorForm
 import com.ujangwahyu.testamarbank.modules.domain.model.ValidationResult
@@ -7,7 +8,6 @@ import com.ujangwahyu.testamarbank.modules.domain.repository.FormRepository
 import com.ujangwahyu.testamarbank.modules.domain.state.FormResultState
 import com.ujangwahyu.testamarbank.modules.domain.usecase.FormUseCase
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 
@@ -44,144 +44,115 @@ class FormInteractor(
     }
 
     override fun validateNationalId(nationalId: String): ValidationResult {
-        return Single.just(nationalId)
-            .flatMap { string ->
-                when {
-                    string.isEmpty() -> {
-                        Single.just(ValidationResult(false, ErrorForm.NATIONAL_ID_EMPTY.message))
-                    }
-
-                    string.length != 16 -> {
-                        Single.just(ValidationResult(false, ErrorForm.NATIONAL_ID_MUST_16.message))
-                    }
-
-                    else -> {
-                        Single.just(ValidationResult(true))
-                    }
-                }
+        return when {
+            nationalId.isEmpty() -> {
+                ValidationResult(false, ErrorForm.NATIONAL_ID_EMPTY.message)
             }
-            .blockingGet()
+
+            nationalId.length != 16 -> {
+                ValidationResult(false, ErrorForm.NATIONAL_ID_INVALID_LENGTH.message)
+            }
+
+            else -> {
+                ValidationResult(true)
+            }
+        }
     }
 
     override fun validateBankAccountNo(accountNo: String): ValidationResult {
-        return Single.just(accountNo)
-            .flatMap { string ->
-                when {
-                    string.isEmpty() -> {
-                        Single.just(ValidationResult(false, ErrorForm.BANK_ACCOUNT_NO_EMPTY.message))
-                    }
-
-                    string.length < 8 -> {
-                        Single.just(ValidationResult(false, ErrorForm.BANK_ACCOUNT_NO_8.message))
-                    }
-
-                    else -> {
-                        Single.just(ValidationResult(true))
-                    }
-                }
+        return when {
+            accountNo.isEmpty() -> {
+                ValidationResult(false, ErrorForm.BANK_ACCOUNT_NO_EMPTY.message)
             }
-            .blockingGet()
+
+            accountNo.length < 8 -> {
+                ValidationResult(false, ErrorForm.BANK_ACCOUNT_NO_INVALID_LENGTH.message)
+            }
+
+            else -> {
+                ValidationResult(true)
+            }
+        }
     }
 
     override fun validateEducation(education: String): ValidationResult {
-        return Single.just(education)
-            .flatMap { string ->
-                when {
-                    string.isEmpty() -> {
-                        Single.just(ValidationResult(false, ErrorForm.EDUCATION_EMPTY.message))
-                    }
-
-                    else -> {
-                        Single.just(ValidationResult(true))
-                    }
-                }
+        return when {
+            education.isEmpty() -> {
+                ValidationResult(false, ErrorForm.EDUCATION_EMPTY.message)
             }
-            .blockingGet()
+
+            else -> {
+                ValidationResult(true)
+            }
+        }
     }
 
     override fun validateDateOfBirth(dob: String): ValidationResult {
-        return Single.just(dob)
-            .flatMap { string ->
-                when {
-                    string.isEmpty() -> {
-                        Single.just(ValidationResult(false, ErrorForm.DOB_EMPTY.message))
-                    }
-
-                    else -> {
-                        Single.just(ValidationResult(true))
-                    }
-                }
+        return when {
+            dob.isEmpty() -> {
+                ValidationResult(false, ErrorForm.DOB_EMPTY.message)
             }
-            .blockingGet()
+
+            !dob.isValidFormat() -> {
+                ValidationResult(false, ErrorForm.DOB_INVALID_FORMATTER.message)
+            }
+
+            else -> {
+                ValidationResult(true)
+            }
+        }
     }
 
     override fun validateDomicile(domicile: String): ValidationResult {
-        return Single.just(domicile)
-            .flatMap { string ->
-                when {
-                    string.isEmpty() -> {
-                        Single.just(ValidationResult(false, ErrorForm.HOUSING_TYPE_EMPTY.message))
-                    }
-
-                    else -> {
-                        Single.just(ValidationResult(true))
-                    }
-                }
+        return when {
+            domicile.isEmpty() -> {
+                ValidationResult(false, ErrorForm.DOMICILE_EMPTY.message)
             }
-            .blockingGet()
+
+            else -> {
+                ValidationResult(true)
+            }
+        }
     }
 
     override fun validateHousingType(housingType: String): ValidationResult {
-        return Single.just(housingType)
-            .flatMap { string ->
-                when {
-                    string.isEmpty() -> {
-                        Single.just(ValidationResult(false, ErrorForm.HOUSING_TYPE_EMPTY.message))
-                    }
-
-                    else -> {
-                        Single.just(ValidationResult(true))
-                    }
-                }
+        return when {
+            housingType.isEmpty() -> {
+                ValidationResult(false, ErrorForm.HOUSING_TYPE_EMPTY.message)
             }
-            .blockingGet()
+
+            else -> {
+                ValidationResult(true)
+            }
+        }
     }
 
     override fun validateHouseNumber(houseNumber: String): ValidationResult {
-        return Single.just(houseNumber)
-            .flatMap { string ->
-                when {
-                    string.isEmpty() -> {
-                        Single.just(ValidationResult(false, ErrorForm.HOUSING_NO_EMPTY.message))
-                    }
-
-                    else -> {
-                        Single.just(ValidationResult(true))
-                    }
-                }
+        return when {
+            houseNumber.isEmpty() -> {
+                ValidationResult(false, ErrorForm.HOUSING_NO_EMPTY.message)
             }
-            .blockingGet()
+
+            else -> {
+                ValidationResult(true)
+            }
+        }
     }
 
     override fun validateProvince(province: String): ValidationResult {
-        return Single.just(province)
-            .flatMap { string ->
-                when {
-                    string.isEmpty() -> {
-                        Single.just(ValidationResult(false, ErrorForm.PROVINCE_NO_EMPTY.message))
-                    }
-
-                    else -> {
-                        Single.just(ValidationResult(true))
-                    }
-                }
+        return when {
+            province.isEmpty() -> {
+                ValidationResult(false, ErrorForm.PROVINCE_NO_EMPTY.message)
             }
-            .blockingGet()
+
+            else -> {
+                ValidationResult(true)
+            }
+        }
     }
 
     override fun clearDisposable() {
         disposable.clear()
     }
-
 
 }
