@@ -52,7 +52,7 @@ For Gradle, i am using the Kotlin DSL, so the extension of the build.gradle file
 <table>
   <tr>
     <td>
-      <img src="https://res.cloudinary.com/kampuskoding/image/upload/v1688793875/Screenshot_2023-07-08_at_12.24.02_1.png" alt="Screenshot 1" width="100%">
+      <img src="https://res.cloudinary.com/ujangwahyu/image/upload/v1688793875/Screenshot_2023-07-08_at_12.24.02_1.png" alt="Screenshot 1" width="100%">
     </td>
   </tr>
 </table>
