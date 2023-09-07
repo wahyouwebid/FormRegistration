@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TestAmarBank</string>
+    <string name="app_name">Form Registration</string>
     <string name="title_toolbar">REGISTRATION FORM</string>
     <string name="title_alamat_ktp">Alamat KTP</string>
     <string name="title_content_description">ImageView</string>
