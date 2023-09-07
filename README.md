@@ -1,5 +1,5 @@
-# TestAmarBank
-Android Engineer - Online Test
+# Simple Form Registration with Clean Architectures
+Native Kotlin
 
 ## Screenshot App
 #### Data Diri
